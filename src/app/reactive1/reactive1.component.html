@@ -1,0 +1,105 @@
+<div style="background-color:darkseagreen">
+    <h1 class="text-success text-center">Simple Reactive Form</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" formControlName="name">
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" formControlName="password">
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <button class="btn btn-success" type="submit">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
+<hr />
+<div style="background-color:honeydew">
+    <h1 style="color:greenyellow" class="text-center">Simple Reactive Form with Validation</h1>
+    <form [formGroup]="loginFormValidation" (ngSubmit)="loginUserValidation()">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" formControlName="name">
+                <br />
+                <span *ngIf="name && name.invalid && name.touched" style="color: red;">This input filed is not valied</span>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" formControlName="email">
+                <br />
+                <span *ngIf="email && email.invalid && email.touched" style="color: red;">This input filed is not valied</span>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" formControlName="password">
+                <br />
+                <span *ngIf="password && password.invalid && password.touched" style="color: red;">This input filed is not valied</span>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <button class="btn btn-success" type="submit" [disabled]="loginFormValidation.invalid">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
+<hr />
+<div style="background-color:honeydew">
+    <h1 style="color:darkcyan" class="text-center">Another Reactive Form with Validation</h1>
+    <form [formGroup]="anotherForm" (ngSubmit)="anotherFormValidation()">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="firstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter FirstName" formControlName="firstname">
+                <div *ngIf="(submitted || f['firstname'].touched) && f['firstname'].invalid" class="text-danger">
+                    <div *ngIf="f['firstname'].errors && f['firstname'].errors['required']">
+                        please enter firstname.
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter LastName" formControlName="lastname">
+                <div *ngIf="(submitted || f['lastname'].touched) && f['lastname'].invalid" class="text-danger">
+                    <div *ngIf="f['lastname'].errors && f['lastname'].errors['required']">
+                        Please ender lastname
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" formControlName="email">
+                <div *ngIf="(submitted || f['email'].touched) && f['email'].invalid" class="text-danger">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">
+                        Please ender Email
+                    </div>
+                    <div *ngIf="f['email'].errors && f['email'].errors['email']">
+                        Please ender Valid  Format
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" formControlName="password">
+                <div *ngIf="(submitted || f['password'].touched) && f['password'].invalid" class="text-danger">
+                    <!-- {{f['password'].errors | json}} -->
+                    <div *ngIf="f['password'].errors && f['password'].errors['required']">
+                        Please ender Password
+                    </div>
+                    <div *ngIf="f['password'].errors && f['password'].errors['minlength']">
+                        Please ender Password minimum 3 characters
+                    </div>
+                    <div *ngIf="f['password'].errors && f['password'].errors['maxlength']">
+                        Please ender Password maximum 12 characters
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <button class="btn btn-success" type="submit" [disabled]="anotherForm.invalid">Login</button>
+            </div>
+        </div>
+    </form>
+</div>

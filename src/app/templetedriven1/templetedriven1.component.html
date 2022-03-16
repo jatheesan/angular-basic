@@ -1,0 +1,48 @@
+<div style="background-color: antiquewhite;">
+    <h1 class="text-primary text-center">Simple Templete Driven</h1>
+    <form class="form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" ngModel>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" ngModel>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <button class="btn btn-primary" type="submit">login</button>
+            </div>
+        </div>
+    </form>
+    <button (click)="loginUser(loginForm.value)">Outside login</button>
+</div>
+<hr />
+<div style="background-color:darkkhaki">
+    <h1 style="color:blueviolet" class="text-center">Simple Templete Driven with validation</h1>
+    <form class="form" #loginFormvalidation="ngForm" (ngSubmit)="loginUserValidation(loginFormvalidation.value)">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" required #name="ngModel" pattern="[a-zA-Z]+$" name="name" id="name" placeholder="Enter Name" ngModel>
+                <br />
+                <span *ngIf="name.invalid && name.touched" style="color: red;">Please enter a Valid name</span>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" required #email="ngModel" email name="email" id="email" placeholder="Enter Email" ngModel>
+                <br />
+                <span *ngIf="email.invalid && email.touched" style="color: red;">Please enter a Valid email</span>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" required #password="ngModel" minlength="5" class="form-control" name="password" placeholder="Enter password" id="password" ngModel>
+                <br />
+                <span *ngIf="password.invalid && password.touched" style="color: red;">Please enter a Valid password</span>
+            </div>
+            <div class="col-md-6 offset-md-3 mb-3">
+                <button class="btn btn-primary" type="submit" [disabled]="loginFormvalidation.invalid">login</button>
+            </div>
+        </div>
+    </form>
+</div>

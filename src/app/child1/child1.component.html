@@ -1,0 +1,10 @@
+<h1>This is Child-1 class</h1>
+<p>child1 works!</p>
+<p>{{ name }}</p>
+<br />
+<hr />
+<label for="childname">Ender Your Name : </label>
+<input type="text" name="childname" id="childname" [ngModel]="enteredchildName" (ngModelChange)="onchildInputChange($event)">
+
+<hr />
+<h2 style="color: darkmagenta;">Parent Name is : {{parentNameinchild}}</h2>
