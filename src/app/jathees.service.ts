@@ -24,5 +24,5 @@ export class JatheesService {
     this.parentAge = age;
   } 
 
-  constructor() { }
+  // constructor() { }
 }

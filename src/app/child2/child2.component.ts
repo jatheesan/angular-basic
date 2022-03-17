@@ -10,12 +10,12 @@ export class Child2Component implements OnInit {
 
   parentAgeinchild2!: number;
   ParentNameinchild2!: string;
-  constructor() { }
+  constructor(private jathees: JatheesService) { }
 
   ngOnInit(): void {
-    let jathees: JatheesService = new JatheesService();
-    this.parentAgeinchild2 = jathees.getParentAge()
-    this.ParentNameinchild2 = jathees.getParentName()
+    // let jathees: JatheesService = new JatheesService();
+    this.parentAgeinchild2 = this.jathees.getParentAge()
+    this.ParentNameinchild2 = this.jathees.getParentName()
   }
 
 }
